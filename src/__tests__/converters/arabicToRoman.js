@@ -32,6 +32,7 @@ describe('arbicToRoman.js', () => {
             [1501, "MDI"]
 
         ])('converts %s to %d', (arabic, roman) => {
+        ])('converts %d to %s', (arabic, roman) => {
             expect(arabicToRoman(arabic)).toEqual(roman);
         });
 
