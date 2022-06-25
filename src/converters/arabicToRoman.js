@@ -12,7 +12,7 @@ const basicRomans = new Map([
 function findMinimalDivisorIndex(arabic) {
     for (let index = 0; index < divisors.length; index++) {
         const divisor = divisors[index];
-        if(arabic > divisor) {
+        if(arabic >= divisor) {
             return index;
         }        
     }
