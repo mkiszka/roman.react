@@ -3,21 +3,21 @@ const divisors = [1000, 500, 100, 50, 10, 5, 1];
 function findRomanPrefix(arabic, divisorIndex) {
     const divisor = divisors[divisorIndex];
     let nextDivisor;
-    if( divisorIndex + 1 < divisors.length) {
+    if (divisorIndex + 1 < divisors.length) {
         nextDivisor = divisors[divisorIndex + 1];
     } else {
         throw new Error('No roman prefix found: 1');
     }
-    if( divisor - nextDivisor === arabic) {
+    if (divisor - nextDivisor === arabic) {
         return basicArabicToRoman(nextDivisor);
     }
 
-    if( divisorIndex + 2 < divisors.length) {
+    if (divisorIndex + 2 < divisors.length) {
         nextDivisor = divisors[divisorIndex + 2];
     } else {
         throw new Error('No roman prefix found: 2');
     }
-    if( divisor - nextDivisor === arabic) {
+    if (divisor - nextDivisor === arabic) {
         return basicArabicToRoman(nextDivisor);
     }
     throw new Error('No roman prefix found');
@@ -60,7 +60,14 @@ function arabicToRoman(arabic, divisorIndex = 0) {
         try {
             roman = basicArabicToRoman(mod);
         } catch {
-            return arabicToRoman(mod, ++divisorIndex);
+            let prefix;
+            try {
+                prefix = findRomanPrefix(mod, divisorIndex);                
+            } catch (error) {
+                return arabicToRoman(mod, ++divisorIndex);
+            }
+            return prefix + basicArabicToRoman(divisor);
+
         }
         return roman;
 

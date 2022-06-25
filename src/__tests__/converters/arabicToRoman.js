@@ -62,7 +62,10 @@ describe('arbicToRoman.js', () => {
             [1666, "MDCLXVI"],
             [666, "DCLXVI"],
             [4, "IV"],
-            //  [90,"XC"],
+            [90,"XC"],
+            //[91,"XC"],
+            //[2,"II"],
+            //[92,"XC"],            
             //[1336,"MCCCVI"]
 
         ])('converts %d to %s', (arabic, roman) => {
