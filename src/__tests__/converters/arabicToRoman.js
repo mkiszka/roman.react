@@ -27,7 +27,7 @@ describe('arbicToRoman.js', () => {
          })
     })
     describe('basicArabicToRoman', () => {
-        it.each([
+        it.each([         
             [1, "I"],
             [4, "IV"], //It will have to be removed.
             [5, "V"],
@@ -66,9 +66,7 @@ describe('arbicToRoman.js', () => {
             [40,"XL"],
             [400,"CD"],
             [900,"CM"],
-            //[940,"CMXL"],
-
-            //[91,"XC"],
+            [940,"CMXL"],            
             //[2,"II"],
             //[92,"XC"],            
             //[1336,"MCCCVI"]

@@ -1,3 +1,4 @@
+import { prepareDecimalSystemArray } from "../numbers/prepareDecimalSystemArray";
 const divisors = [1000, 500, 100, 50, 10, 5, 1];
 
 function findRomanPrefix(arabic, divisorIndex) {
@@ -41,18 +42,34 @@ function basicArabicToRoman(arabic) {
     throw new Error(`${arabic} does not represent basic roman number`);
 }
 
-function arabicToRoman(arabic, divisorIndex = 0) {
+function arabicToRoman(arabic) {
+    if (arabic === 0) return "none";
+
+    let roman = "";
+    const decimalParts = prepareDecimalSystemArray(arabic);
+
+    for (let index = 0; index < decimalParts.length; index++) {
+        const element = decimalParts[index];
+        if (element !== 0 || index !== 0) {
+            roman = singlePositionArabicToRoman(element) + roman;
+        }
+
+    }
+    return roman;
+}
+
+function singlePositionArabicToRoman(arabic, divisorIndex = 0) {
     let divisor = divisors[divisorIndex];
     let div = arabic / divisor;
     let floor = Math.floor(div)
     let mod = arabic % divisor;
 
-    let roman = "none";
+    let roman = "";
 
     if (floor === 1) {
         roman = basicArabicToRoman(divisor);
         if (mod > 0) {
-            roman += arabicToRoman(mod);
+            roman += singlePositionArabicToRoman(mod);
         }
         return roman;
     }
@@ -62,9 +79,9 @@ function arabicToRoman(arabic, divisorIndex = 0) {
         } catch {
             let prefix;
             try {
-                prefix = findRomanPrefix(mod, divisorIndex);                
+                prefix = findRomanPrefix(mod, divisorIndex);
             } catch (error) {
-                return arabicToRoman(mod, ++divisorIndex);
+                return singlePositionArabicToRoman(mod, ++divisorIndex);
             }
             return prefix + basicArabicToRoman(divisor);
 
