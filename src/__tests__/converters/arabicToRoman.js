@@ -1,9 +1,11 @@
 import { arabicToRoman } from '../../converters/arabicToRoman.js'
 
-describe('arabitToRoman', () => {
+describe('arabicToRoman', () => {
     it.each([
         [1,"I"],
-        [5,"V"]    
+        [5,"V"],
+        [10,"X"]
+
     ])('converts %s to %d', (arabic, roman) => {
         expect(arabicToRoman(arabic)).toEqual(roman);
     });  

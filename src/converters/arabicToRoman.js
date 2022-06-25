@@ -4,6 +4,8 @@ function arabicToRoman(arabic) {
         roman = "I";
     } else if (arabic == 5) {
         roman = "V";
+    } else if (arabic == 10) {
+        roman = "X";
     }
     return roman;
 }
