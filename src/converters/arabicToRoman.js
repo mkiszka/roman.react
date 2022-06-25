@@ -12,11 +12,11 @@ function findRomanPrefix(arabic, divisorIndex) {
         return basicArabicToRoman(nextDivisor);
     }
 
-    if( divisorIndex + 2 <= divisors.length) {
+    if( divisorIndex + 2 < divisors.length) {
         nextDivisor = divisors[divisorIndex + 2];
-    } /*else {
-        throw new Error('No roman prefix found');
-    }*/
+    } else {
+        throw new Error('No roman prefix found: 2');
+    }
     if( divisor - nextDivisor === arabic) {
         return basicArabicToRoman(nextDivisor);
     }
