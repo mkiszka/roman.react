@@ -16,9 +16,10 @@ function basicArabicToRoman(arabic) {
     }
     throw new Error(`${arabic} does not represent basic roman number`);
 }
-function arabicToRoman(arabic) {
-    let divisor = 1000
-    let div = arabic / divisor
+const divisors = [1000,500,100,50,10,5] 
+function arabicToRoman(arabic,divisorIndex = 0) {
+    let divisor = divisors[divisorIndex];
+    let div = arabic / divisor;
     let floor = Math.floor(div)
     let mod = arabic % divisor;
 
@@ -32,7 +33,11 @@ function arabicToRoman(arabic) {
         return roman;
     } 
     if (floor === 0 && mod > 0) {
-        roman = basicArabicToRoman(mod);                     
+        try {
+            roman = basicArabicToRoman(mod);
+        } catch {
+            return arabicToRoman(mod,++divisorIndex);
+        }
         return roman;
         
     }

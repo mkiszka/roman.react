@@ -28,7 +28,8 @@ describe('arbicToRoman.js', () => {
             [100, "C"],
             [500, "D"],
             [1000, "M"],
-            [1001, "MI"]
+            [1001, "MI"],
+            [1501, "MDI"]
 
         ])('converts %s to %d', (arabic, roman) => {
             expect(arabicToRoman(arabic)).toEqual(roman);
