@@ -1,3 +1,6 @@
+function findRomanSuffix(arabic) {
+    throw new Error('No roman suffix found');
+}
 function basicArabicToRoman(arabic) {
     const basicRomans = new Map([
         [1, "I"],
@@ -45,4 +48,4 @@ function arabicToRoman(arabic, divisorIndex = 0) {
 
 
 }
-export { arabicToRoman, basicArabicToRoman }
+export { arabicToRoman, basicArabicToRoman, findRomanSuffix }

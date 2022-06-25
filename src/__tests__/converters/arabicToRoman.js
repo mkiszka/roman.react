@@ -1,15 +1,26 @@
-import { arabicToRoman, basicArabicToRoman } from '../../converters/arabicToRoman.js'
+import { arabicToRoman, basicArabicToRoman, findRomanSuffix } from '../../converters/arabicToRoman.js'
 describe('arbicToRoman.js', () => {
+    describe('findRomanSuffix', () => {
+        it('throws error if suffix not found',() => {
+            expect(() => {
+                findRomanSuffix(40)
+            }).toThrow();
+        });
+        // it.each([
+        //     [],
+        // ])('')
+    })
     describe('basicArabicToRoman', () => {
         it.each([
-            [1, "I"],          
+            [1, "I"],
+            [4, "IV"], //It will have to be removed.
             [5, "V"],
             [10, "X"],
             [50, "L"],
             [100, "C"],
             [500, "D"],
             [1000, "M"],
-        ])(' return basic roman - %d as %s', (arabic,roman) => {
+        ])(' return basic roman - %d as %s', (arabic, roman) => {
             expect(basicArabicToRoman(arabic)).toEqual(roman);
         });
         it(' throw error if param arabic is not basic roman number', () => {
@@ -34,7 +45,8 @@ describe('arbicToRoman.js', () => {
             [55, "LV"],
             [1666, "MDCLXVI"],
             [666, "DCLXVI"],
-            [4,"IV"]
+            [4, "IV"],
+            //  [90,"XC"],
             //[1336,"MCCCVI"]
 
         ])('converts %d to %s', (arabic, roman) => {
