@@ -6,7 +6,12 @@ describe('arbicToRoman.js', () => {
                 findRomanPrefix(40)
             }).toThrow();
         });
-         it.each([
+        it('throws error if divisors index is out of range',() => {
+            expect(() => {
+                findRomanPrefix(40,6)
+            }).toThrowError('No roman prefix found: 1');
+        });
+        it.each([
              [90, 2, "X"],
              [900, 0, "C"],
              [400, 1, "C"],

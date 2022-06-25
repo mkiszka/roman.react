@@ -3,11 +3,11 @@ const divisors = [1000, 500, 100, 50, 10, 5, 1];
 function findRomanPrefix(arabic, divisorIndex) {
     const divisor = divisors[divisorIndex];
     let nextDivisor;
-    if( divisorIndex + 1 <= divisors.length) {
+    if( divisorIndex + 1 < divisors.length) {
         nextDivisor = divisors[divisorIndex + 1];
-    } /*else {
-        throw new Error('No roman prefix found');
-    }*/
+    } else {
+        throw new Error('No roman prefix found: 1');
+    }
     if( divisor - nextDivisor === arabic) {
         return basicArabicToRoman(nextDivisor);
     }
