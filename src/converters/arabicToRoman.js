@@ -1,6 +1,28 @@
-function findRomanSuffix(arabic) {
+const divisors = [1000, 500, 100, 50, 10, 5];
+
+function findRomanSuffix(arabic, divisorIndex) {
+    const divisor = divisors[divisorIndex];
+    let nextDivisor;
+    if( divisorIndex + 1 <= divisors.length) {
+        nextDivisor = divisors[divisorIndex + 1];
+    } /*else {
+        throw new Error('No roman suffix found');
+    }*/
+    if( divisor - nextDivisor === arabic) {
+        return basicArabicToRoman(nextDivisor);
+    }
+
+    if( divisorIndex + 2 <= divisors.length) {
+        nextDivisor = divisors[divisorIndex + 2];
+    } /*else {
+        throw new Error('No roman suffix found');
+    }*/
+    if( divisor - nextDivisor === arabic) {
+        return basicArabicToRoman(nextDivisor);
+    }
     throw new Error('No roman suffix found');
 }
+
 function basicArabicToRoman(arabic) {
     const basicRomans = new Map([
         [1, "I"],
@@ -13,12 +35,12 @@ function basicArabicToRoman(arabic) {
         [1000, "M"]
     ]);
 
-    if ( basicRomans.has(arabic))  {
+    if (basicRomans.has(arabic)) {
         return basicRomans.get(arabic);
-    }      
+    }
     throw new Error(`${arabic} does not represent basic roman number`);
 }
-const divisors = [1000, 500, 100, 50, 10, 5]
+
 function arabicToRoman(arabic, divisorIndex = 0) {
     let divisor = divisors[divisorIndex];
     let div = arabic / divisor;

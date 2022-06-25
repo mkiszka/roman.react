@@ -6,9 +6,11 @@ describe('arbicToRoman.js', () => {
                 findRomanSuffix(40)
             }).toThrow();
         });
-        // it.each([
-        //     [],
-        // ])('')
+         it.each([
+             [90, 2, "X"],
+         ])(' for arabic number: %n for divisior index $n',(arabic, divisiorIndex, romanSuffix) => {
+            expect(findRomanSuffix(arabic,divisiorIndex)).toEqual(romanSuffix);
+         })
     })
     describe('basicArabicToRoman', () => {
         it.each([
