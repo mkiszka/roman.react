@@ -2,7 +2,7 @@ import { arabicToRoman, basicArabicToRoman } from '../../converters/arabicToRoma
 describe('arbicToRoman.js', () => {
     describe('basicArabicToRoman', () => {
         it.each([
-            [1, "I"],
+            [1, "I"],          
             [5, "V"],
             [10, "X"],
             [50, "L"],
@@ -33,7 +33,9 @@ describe('arbicToRoman.js', () => {
             [1551, "MDLI"],
             [55, "LV"],
             [1666, "MDCLXVI"],
-            [666, "DCLXVI"]
+            [666, "DCLXVI"],
+            [4,"IV"]
+            //[1336,"MCCCVI"]
 
         ])('converts %d to %s', (arabic, roman) => {
             expect(arabicToRoman(arabic)).toEqual(roman);
