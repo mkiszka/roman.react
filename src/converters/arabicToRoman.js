@@ -1,21 +1,18 @@
 function basicArabicToRoman(arabic) {
-    if (arabic === 1) {
-        return "I";
-    } else if (arabic === 4) {
-        return "IV";
-    } else if (arabic === 5) {
-        return "V";
-    } else if (arabic === 10) {
-        return "X";
-    } else if (arabic === 50) {
-        return "L";
-    } else if (arabic === 100) {
-        return "C";
-    } else if (arabic === 500) {
-        return "D";
-    } else if (arabic === 1000) {
-        return "M";
-    }
+    const basicRomans = new Map([
+        [1, "I"],
+        [4, "IV"],
+        [5, "V"],
+        [10, "X"],
+        [50, "L"],
+        [100, "C"],
+        [500, "D"],
+        [1000, "M"]
+    ]);
+
+    if ( basicRomans.has(arabic))  {
+        return basicRomans.get(arabic);
+    }      
     throw new Error(`${arabic} does not represent basic roman number`);
 }
 const divisors = [1000, 500, 100, 50, 10, 5]
