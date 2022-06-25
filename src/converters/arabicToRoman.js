@@ -14,6 +14,7 @@ function basicArabicToRoman(arabic) {
     } else if (arabic === 1000) {
         return "M";
     }
+    throw new Error(`${arabic} does not represent basic roman number`);
 }
 function arabicToRoman(arabic) {
     let divisor = 1000

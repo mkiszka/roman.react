@@ -12,6 +12,11 @@ describe('arbicToRoman.js', () => {
         ])(' return basic roman - %d as %s', (arabic,roman) => {
             expect(basicArabicToRoman(arabic)).toEqual(roman);
         });
+        it(' throw error if param arabic is not basic roman number', () => {
+            expect(() => {
+                basicArabicToRoman(6);
+            }).toThrow();
+        })
 
     })
     describe('arabicToRoman', () => {
