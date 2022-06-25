@@ -1,34 +1,34 @@
 import { arabicToRoman, basicArabicToRoman, findRomanPrefix } from '../../converters/arabicToRoman.js'
 describe('arbicToRoman.js', () => {
     describe('findRomanPrefix', () => {
-        it('throws error if prefix not found',() => {
+        it('throws error if prefix not found', () => {
             expect(() => {
                 findRomanPrefix(40)
             }).toThrow();
         });
-        it('throws error if divisors index is out of range +1',() => {
+        it('throws error if divisors index is out of range +1', () => {
             expect(() => {
-                findRomanPrefix(40,6)
+                findRomanPrefix(40, 6)
             }).toThrowError('No roman prefix found: 1');
         });
-        it('throws error if divisors index is out of range +2',() => {
+        it('throws error if divisors index is out of range +2', () => {
             expect(() => {
-                findRomanPrefix(40,5)
+                findRomanPrefix(40, 5)
             }).toThrowError('No roman prefix found: 2');
         });
         it.each([
-             [90, 2, "X"],
-             [900, 0, "C"],
-             [400, 1, "C"],
-             [40, 3, "X" ],
-             [9, 4, "I" ],
-         ])(' for arabic number: %d for divisior index: %d prefix: %d',(arabic, divisiorIndex, romanPrefix) => {
-            expect(findRomanPrefix(arabic,divisiorIndex)).toEqual(romanPrefix);
-         })
+            [90, 2, "X"],
+            [900, 0, "C"],
+            [400, 1, "C"],
+            [40, 3, "X"],
+            [9, 4, "I"],
+        ])(' for arabic number: %d for divisior index: %d prefix: %d', (arabic, divisiorIndex, romanPrefix) => {
+            expect(findRomanPrefix(arabic, divisiorIndex)).toEqual(romanPrefix);
+        })
     })
     describe('basicArabicToRoman', () => {
-        it.each([         
-            [1, "I"],           
+        it.each([
+            [1, "I"],
             [5, "V"],
             [10, "X"],
             [50, "L"],
@@ -62,15 +62,17 @@ describe('arbicToRoman.js', () => {
             [1666, "MDCLXVI"],
             [666, "DCLXVI"],
             [4, "IV"],
-            [90,"XC"],
-            [40,"XL"],
-            [400,"CD"],
-            [900,"CM"],
-            [940,"CMXL"],            
-            //[2,"II"],
-            //[92,"XCII"],            
-            //[1336,"MCCCXXXVI"]
-
+            [90, "XC"],
+            [40, "XL"],
+            [400, "CD"],
+            [900, "CM"],
+            [940, "CMXL"],
+            [2, "II"],
+            [92,"XCII"],            
+            [1336,"MCCCXXXVI"],
+            [3336,"MMMCCCXXXVI"],
+            [5336,"MMMMMCCCXXXVI"],
+            
         ])('converts %d to %s', (arabic, roman) => {
             expect(arabicToRoman(arabic)).toEqual(roman);
         });

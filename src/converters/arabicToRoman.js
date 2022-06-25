@@ -64,8 +64,11 @@ function arabicToRoman(arabic) {
 
         let roman = "";
 
-        if (floor === 1) {
-            roman = basicArabicToRoman(divisor);
+        if (floor >= 1) {
+            for (let index = 0; index < floor; index++) {
+                roman += basicArabicToRoman(divisor);                
+            }
+            
             if (mod > 0) {
                 roman += singlePositionArabicToRoman(mod);
             }
