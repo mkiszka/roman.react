@@ -1,5 +1,14 @@
 import { prepareDecimalSystemArray } from "../numbers/prepareDecimalSystemArray";
 const divisors = [1000, 500, 100, 50, 10, 5, 1];
+const basicRomans = new Map([
+    [1, "I"],      
+    [5, "V"],
+    [10, "X"],
+    [50, "L"],
+    [100, "C"],
+    [500, "D"],
+    [1000, "M"]
+]);
 
 function findRomanPrefix(arabic, divisorIndex) {
     const divisor = divisors[divisorIndex];
@@ -25,15 +34,7 @@ function findRomanPrefix(arabic, divisorIndex) {
 }
 
 function basicArabicToRoman(arabic) {
-    const basicRomans = new Map([
-        [1, "I"],      
-        [5, "V"],
-        [10, "X"],
-        [50, "L"],
-        [100, "C"],
-        [500, "D"],
-        [1000, "M"]
-    ]);
+    
     if (basicRomans.has(arabic)) {
         return basicRomans.get(arabic);
     }
