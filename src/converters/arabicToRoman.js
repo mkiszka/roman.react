@@ -1,12 +1,12 @@
 const divisors = [1000, 500, 100, 50, 10, 5, 1];
 
-function findRomanSuffix(arabic, divisorIndex) {
+function findRomanPrefix(arabic, divisorIndex) {
     const divisor = divisors[divisorIndex];
     let nextDivisor;
     if( divisorIndex + 1 <= divisors.length) {
         nextDivisor = divisors[divisorIndex + 1];
     } /*else {
-        throw new Error('No roman suffix found');
+        throw new Error('No roman prefix found');
     }*/
     if( divisor - nextDivisor === arabic) {
         return basicArabicToRoman(nextDivisor);
@@ -15,12 +15,12 @@ function findRomanSuffix(arabic, divisorIndex) {
     if( divisorIndex + 2 <= divisors.length) {
         nextDivisor = divisors[divisorIndex + 2];
     } /*else {
-        throw new Error('No roman suffix found');
+        throw new Error('No roman prefix found');
     }*/
     if( divisor - nextDivisor === arabic) {
         return basicArabicToRoman(nextDivisor);
     }
-    throw new Error('No roman suffix found');
+    throw new Error('No roman prefix found');
 }
 
 function basicArabicToRoman(arabic) {
@@ -70,4 +70,4 @@ function arabicToRoman(arabic, divisorIndex = 0) {
 
 
 }
-export { arabicToRoman, basicArabicToRoman, findRomanSuffix }
+export { arabicToRoman, basicArabicToRoman, findRomanPrefix }

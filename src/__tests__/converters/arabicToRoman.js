@@ -1,9 +1,9 @@
-import { arabicToRoman, basicArabicToRoman, findRomanSuffix } from '../../converters/arabicToRoman.js'
+import { arabicToRoman, basicArabicToRoman, findRomanPrefix } from '../../converters/arabicToRoman.js'
 describe('arbicToRoman.js', () => {
-    describe('findRomanSuffix', () => {
-        it('throws error if suffix not found',() => {
+    describe('findRomanPrefix', () => {
+        it('throws error if prefix not found',() => {
             expect(() => {
-                findRomanSuffix(40)
+                findRomanPrefix(40)
             }).toThrow();
         });
          it.each([
@@ -12,8 +12,8 @@ describe('arbicToRoman.js', () => {
              [400, 1, "C"],
              [40, 3, "X" ],
              [9, 4, "I" ],
-         ])(' for arabic number: %d for divisior index: %d prefix: %d',(arabic, divisiorIndex, romanSuffix) => {
-            expect(findRomanSuffix(arabic,divisiorIndex)).toEqual(romanSuffix);
+         ])(' for arabic number: %d for divisior index: %d prefix: %d',(arabic, divisiorIndex, romanPrefix) => {
+            expect(findRomanPrefix(arabic,divisiorIndex)).toEqual(romanPrefix);
          })
     })
     describe('basicArabicToRoman', () => {
