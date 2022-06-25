@@ -1,3 +1,20 @@
+function basicArabicToRoman(arabic) {
+    if (arabic === 1) {
+        return "I";
+    } else if (arabic === 5) {
+        return "V";
+    } else if (arabic === 10) {
+        return "X";
+    } else if (arabic === 50) {
+        return "L";
+    } else if (arabic === 100) {
+        return "C";
+    } else if (arabic === 500) {
+        return "D";
+    } else if (arabic === 1000) {
+        return "M";
+    }
+}
 function arabicToRoman(arabic) {
     let divisor = 1000
     let div = arabic / divisor
@@ -52,4 +69,4 @@ function arabicToRoman(arabic) {
     
     
 }
-export { arabicToRoman }
+export { arabicToRoman, basicArabicToRoman }
