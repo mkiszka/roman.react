@@ -72,6 +72,7 @@ describe('arbicToRoman.js', () => {
             [1336,"MCCCXXXVI"],
             [3336,"MMMCCCXXXVI"],
             [5336,"MMMMMCCCXXXVI"],
+            [2019,"MMXIX"],
             
         ])('converts %d to %s', (arabic, roman) => {
             expect(arabicToRoman(arabic)).toEqual(roman);
