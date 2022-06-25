@@ -1,4 +1,4 @@
-const divisors = [1000, 500, 100, 50, 10, 5];
+const divisors = [1000, 500, 100, 50, 10, 5, 1];
 
 function findRomanSuffix(arabic, divisorIndex) {
     const divisor = divisors[divisorIndex];

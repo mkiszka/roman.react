@@ -8,7 +8,11 @@ describe('arbicToRoman.js', () => {
         });
          it.each([
              [90, 2, "X"],
-         ])(' for arabic number: %n for divisior index $n',(arabic, divisiorIndex, romanSuffix) => {
+             [900, 0, "C"],
+             [400, 1, "C"],
+             [40, 3, "X" ],
+             [9, 4, "I" ],
+         ])(' for arabic number: %d for divisior index: %d prefix: %d',(arabic, divisiorIndex, romanSuffix) => {
             expect(findRomanSuffix(arabic,divisiorIndex)).toEqual(romanSuffix);
          })
     })
