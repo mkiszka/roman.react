@@ -35,7 +35,6 @@ function basicArabicToRoman(arabic) {
         [500, "D"],
         [1000, "M"]
     ]);
-
     if (basicRomans.has(arabic)) {
         return basicRomans.get(arabic);
     }
@@ -56,42 +55,43 @@ function arabicToRoman(arabic) {
 
     }
     return roman;
-}
 
-function singlePositionArabicToRoman(arabic, divisorIndex = 0) {
-    let divisor = divisors[divisorIndex];
-    let div = arabic / divisor;
-    let floor = Math.floor(div)
-    let mod = arabic % divisor;
 
-    let roman = "";
+    function singlePositionArabicToRoman(arabic, divisorIndex = 0) {
+        let divisor = divisors[divisorIndex];
+        let div = arabic / divisor;
+        let floor = Math.floor(div)
+        let mod = arabic % divisor;
 
-    if (floor === 1) {
-        roman = basicArabicToRoman(divisor);
-        if (mod > 0) {
-            roman += singlePositionArabicToRoman(mod);
-        }
-        return roman;
-    }
-    if (floor === 0 && mod > 0) {
-        try {
-            roman = basicArabicToRoman(mod);
-        } catch {
-            let prefix;
-            try {
-                prefix = findRomanPrefix(mod, divisorIndex);
-            } catch (error) {
-                return singlePositionArabicToRoman(mod, ++divisorIndex);
+        let roman = "";
+
+        if (floor === 1) {
+            roman = basicArabicToRoman(divisor);
+            if (mod > 0) {
+                roman += singlePositionArabicToRoman(mod);
             }
-            return prefix + basicArabicToRoman(divisor);
+            return roman;
+        }
+        if (floor === 0 && mod > 0) {
+            try {
+                roman = basicArabicToRoman(mod);
+            } catch {
+                let prefix;
+                try {
+                    prefix = findRomanPrefix(mod, divisorIndex);
+                } catch (error) {
+                    return singlePositionArabicToRoman(mod, ++divisorIndex);
+                }
+                return prefix + basicArabicToRoman(divisor);
+
+            }
+            return roman;
 
         }
+
         return roman;
 
+
     }
-
-    return roman;
-
-
 }
 export { arabicToRoman, basicArabicToRoman, findRomanPrefix }
