@@ -28,8 +28,7 @@ describe('arbicToRoman.js', () => {
     })
     describe('basicArabicToRoman', () => {
         it.each([         
-            [1, "I"],
-            [4, "IV"], //It will have to be removed.
+            [1, "I"],           
             [5, "V"],
             [10, "X"],
             [50, "L"],
@@ -49,6 +48,7 @@ describe('arbicToRoman.js', () => {
     describe('arabicToRoman', () => {
         it.each([
             [1, "I"],
+            [4, "IV"],
             [5, "V"],
             [10, "X"],
             [50, "L"],
@@ -68,8 +68,8 @@ describe('arbicToRoman.js', () => {
             [900,"CM"],
             [940,"CMXL"],            
             //[2,"II"],
-            //[92,"XC"],            
-            //[1336,"MCCCVI"]
+            //[92,"XCII"],            
+            //[1336,"MCCCXXXVI"]
 
         ])('converts %d to %s', (arabic, roman) => {
             expect(arabicToRoman(arabic)).toEqual(roman);
