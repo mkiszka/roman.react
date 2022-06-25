@@ -1,4 +1,4 @@
-import { arabicToRoman, basicArabicToRoman, findRomanPrefix } from '../../converters/arabicToRoman.js'
+import { arabicToRoman, basicArabicToRoman, findRomanPrefix, findMinimalDivisorIndex } from '../../converters/arabicToRoman.js'
 describe('arbicToRoman.js', () => {
     describe('findRomanPrefix', () => {
         it('throws error if prefix not found', () => {
@@ -68,12 +68,12 @@ describe('arbicToRoman.js', () => {
             [900, "CM"],
             [940, "CMXL"],
             [2, "II"],
-            [92,"XCII"],            
-            [1336,"MCCCXXXVI"],
-            [3336,"MMMCCCXXXVI"],
-            [5336,"MMMMMCCCXXXVI"],
-            [2019,"MMXIX"],
-            
+            [92, "XCII"],
+            [1336, "MCCCXXXVI"],
+            [3336, "MMMCCCXXXVI"],
+            [5336, "MMMMMCCCXXXVI"],
+            [2019, "MMXIX"],
+
         ])('converts %d to %s', (arabic, roman) => {
             expect(arabicToRoman(arabic)).toEqual(roman);
         });
@@ -81,5 +81,19 @@ describe('arbicToRoman.js', () => {
         it('does not convert 0 to any roman number', () => {
             expect(arabicToRoman(0)).toEqual("none");
         });
+    });
+    describe('findMinimalDivisorIndex', () => {
+        it.each([
+            [1005, 0]
+        ])(' %d shoud find %d divisor index', (arabic,expectedIndex) => {
+            expect(findMinimalDivisorIndex(arabic)).toEqual(expectedIndex);
+        });
+        it.each([0,-1])(' should throw "can not find minimal divisor index" for %d',(arabic) => {
+            expect( () => {
+                findMinimalDivisorIndex(arabic);
+            }).toThrow('can not find minimal divisor index');
+        });
+        
+
     });
 });

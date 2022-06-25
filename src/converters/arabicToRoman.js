@@ -1,7 +1,7 @@
 import { prepareDecimalSystemArray } from "../numbers/prepareDecimalSystemArray";
 const divisors = [1000, 500, 100, 50, 10, 5, 1];
 const basicRomans = new Map([
-    [1, "I"],      
+    [1, "I"],
     [5, "V"],
     [10, "X"],
     [50, "L"],
@@ -9,6 +9,15 @@ const basicRomans = new Map([
     [500, "D"],
     [1000, "M"]
 ]);
+function findMinimalDivisorIndex(arabic) {
+    for (let index = 0; index < divisors.length; index++) {
+        const divisor = divisors[index];
+        if(arabic > divisor) {
+            return index;
+        }        
+    }
+    throw new Error('can not find minimal divisor index');    
+}
 
 function findRomanPrefix(arabic, divisorIndex) {
     const divisor = divisors[divisorIndex];
@@ -34,7 +43,7 @@ function findRomanPrefix(arabic, divisorIndex) {
 }
 
 function basicArabicToRoman(arabic) {
-    
+
     if (basicRomans.has(arabic)) {
         return basicRomans.get(arabic);
     }
@@ -67,9 +76,9 @@ function arabicToRoman(arabic) {
 
         if (floor >= 1) {
             for (let index = 0; index < floor; index++) {
-                roman += basicArabicToRoman(divisor);                
+                roman += basicArabicToRoman(divisor);
             }
-            
+
             if (mod > 0) {
                 roman += singlePositionArabicToRoman(mod);
             }
@@ -97,4 +106,4 @@ function arabicToRoman(arabic) {
 
     }
 }
-export { arabicToRoman, basicArabicToRoman, findRomanPrefix }
+export { arabicToRoman, basicArabicToRoman, findRomanPrefix, findMinimalDivisorIndex }
