@@ -12,6 +12,8 @@ function arabicToRoman(arabic) {
         roman = "C";
     } else if (arabic === 500) {
         roman = "D";
+    } else if (arabic === 1000) {
+        roman = "M";
     }
     return roman;
 }
