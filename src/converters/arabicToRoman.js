@@ -8,6 +8,10 @@ function arabicToRoman(arabic) {
         roman = "X";
     } else if (arabic === 50) {
         roman = "L";
+    } else if (arabic === 100) {
+        roman = "C";
+    } else if (arabic === 500) {
+        roman = "D";
     }
     return roman;
 }

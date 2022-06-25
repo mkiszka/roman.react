@@ -6,7 +6,8 @@ describe('arabicToRoman', () => {
         [5,"V"],
         [10,"X"],
         [50,"L"],
-        [100,"C"]
+        [100,"C"],
+        [500,"D"]
 
     ])('converts %s to %d', (arabic, roman) => {
         expect(arabicToRoman(arabic)).toEqual(roman);
