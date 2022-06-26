@@ -10,13 +10,14 @@ const basicRomans = new Map([
     [1000, "M"]
 ]);
 function findMinimalDivisorIndex(arabic) {
+    if (arabic <= 0) return 0;
     for (let index = 0; index < divisors.length; index++) {
         const divisor = divisors[index];
         if (arabic >= divisor) {
             return index > 0 ? index - 1 : 0;
         }
     }
-    throw new Error('can not find minimal divisor index for %s', arabic);
+    return 0;
 }
 
 function findRomanPrefix(arabic, divisorIndex) {
@@ -59,7 +60,7 @@ function arabicToRoman(arabic) {
     for (let index = 0; index < decimalParts.length; index++) {
         const element = decimalParts[index];
         if (element !== 0 || index !== 0) {
-            roman = singlePositionArabicToRoman(element, element===0?0:findMinimalDivisorIndex(element)) + roman;
+            roman = singlePositionArabicToRoman(element, findMinimalDivisorIndex(element)) + roman;
         }
 
     }
