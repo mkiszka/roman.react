@@ -42,7 +42,7 @@ describe('<RomanConverter />', () => {
             getByText("Roman: none");
         }).not.toThrow();
     });
-    it.skip('does convert 2019 to MMXIX', () => {
+    it('does convert 2019 to MMXIX', () => {
         const { getByText, getByLabelText } = render(<RomanConverter />);
         
         fireEvent.change(getByLabelText(/arabic/i), { target: { value: "2019" } });
