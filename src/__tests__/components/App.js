@@ -4,7 +4,7 @@ import RomanConverter from '../../components/RomanConverter';
 
 test('renders learn react link', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText(/Arabic to roman converter./i);
   expect(linkElement).toBeInTheDocument();
 });
 
