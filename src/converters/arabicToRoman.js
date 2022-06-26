@@ -53,7 +53,7 @@ function basicArabicToRoman(arabic) {
 
 function arabicToRoman(arabic) {
     if (arabic === 0) return "none";
-
+    if (arabic > 3999) return "Maximum of roman number is 3999";
     let roman = "";
     const decimalParts = prepareDecimalSystemArray(arabic);
 

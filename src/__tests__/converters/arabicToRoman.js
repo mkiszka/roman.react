@@ -70,9 +70,9 @@ describe('arbicToRoman.js', () => {
             [2, "II"],
             [92, "XCII"],
             [1336, "MCCCXXXVI"],
-            [3336, "MMMCCCXXXVI"],
-            [5336, "MMMMMCCCXXXVI"],
+            [3336, "MMMCCCXXXVI"],         
             [2019, "MMXIX"],
+            [4000,'Maximum of roman number is 3999']
 
         ])('converts %d to %s', (arabic, roman) => {
             expect(arabicToRoman(arabic)).toEqual(roman);
