@@ -86,10 +86,11 @@ describe('arbicToRoman.js', () => {
         it.each([
             [1005, 0],
             [1000,0],
-            [999,1],
-            [900,1],
-            [1,6],
-            [2,6]
+            [999,0],
+            [900,0],
+            [1,5],
+            [2,5],
+            [9,4]
         ])(' %d shoud find %d divisor index', (arabic,expectedIndex) => {
             expect(findMinimalDivisorIndex(arabic)).toEqual(expectedIndex);
         });
